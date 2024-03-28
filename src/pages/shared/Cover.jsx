@@ -1,4 +1,3 @@
-import PopularMenu from "../Home/PopularMenu";
 import { Parallax } from "react-parallax";
 
 const Cover = ({ img, title }) => {
