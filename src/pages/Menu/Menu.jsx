@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+
 import Cover from "../shared/Cover";
 import imgMenu from "../../assets/menu/banner3.jpg";
 import imgDessert from "../../assets/menu/dessert-bg.jpeg";

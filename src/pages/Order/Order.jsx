@@ -8,6 +8,7 @@ import useMenu from "../../hooks/useMenu";
 import FoodCard from "../../components/FoodCard";
 import { useParams } from "react-router-dom";
 import Title from "../shared/Title";
+import FoodCards from "./FoodCards";
 
 const Order = () => {
   const categories = ["salad", "soup", "pizza", "dessert", "drink"];
@@ -16,7 +17,10 @@ const Order = () => {
   const [index, setIndex] = useState(ii);
   const { salad, soup, pizza, dessert, drink, loading } = useMenu();
 
-  if (loading) return <span className="loading loading-bars h-40 w-40 mx-auto block"></span>;
+  if (loading)
+    return (
+      <span className="loading loading-bars h-40 w-40 mx-auto block"></span>
+    );
 
   return (
     <>
@@ -39,43 +43,21 @@ const Order = () => {
         </TabList>
 
         <TabPanel>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 justify-items-center gap-4 my-12">
-            {salad.map((item) => (
-              <FoodCard key={item._id} item={item} />
-            ))}
-          </div>
+          <FoodCards items={salad} />
+        </TabPanel>
+        <TabPanel>
+          <FoodCards items={soup} />
         </TabPanel>
 
         <TabPanel>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 justify-items-center gap-4 my-12">
-            {soup.map((item) => (
-              <FoodCard key={item._id} item={item} />
-            ))}
-          </div>
+          <FoodCards items={pizza} />
         </TabPanel>
 
         <TabPanel>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 justify-items-center gap-4 my-12">
-            {pizza.map((item) => (
-              <FoodCard key={item._id} item={item} />
-            ))}
-          </div>
+          <FoodCards items={dessert} />
         </TabPanel>
-
         <TabPanel>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 justify-items-center gap-4 my-12">
-            {dessert.map((item) => (
-              <FoodCard key={item._id} item={item} />
-            ))}
-          </div>
-        </TabPanel>
-
-        <TabPanel>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 justify-items-center gap-4 my-12">
-            {drink.map((item) => (
-              <FoodCard key={item._id} item={item} />
-            ))}
-          </div>
+          <FoodCards items={drink} />
         </TabPanel>
       </Tabs>
     </>
