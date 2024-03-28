@@ -12,7 +12,15 @@ const useMenu = () => {
         setLoading(false);
       });
   }, []);
-  return [menu, loading];
+
+  const salad = menu.filter((item) => item.category === "salad");
+  const soup = menu.filter((item) => item.category === "soup");
+  const pizza = menu.filter((item) => item.category === "pizza");
+  const dessert = menu.filter((item) => item.category === "dessert");
+  const offered = menu.filter((item) => item.category === "offered");
+  const drink = menu.filter((item) => item.category === "drinks");
+
+  return { menu, loading, salad, soup, pizza, dessert, offered, drink };
 };
 
 export default useMenu;

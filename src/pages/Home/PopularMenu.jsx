@@ -1,10 +1,9 @@
-
 import SectionTitle from "../../components/SectionTitle";
 import MenuItem from "../shared/MenuItem";
 import useMenu from "../../hooks/useMenu";
 
 const PopularMenu = () => {
-  const [menu] = useMenu();
+  const { menu } = useMenu();
 
   return (
     <section className="mb-12">
