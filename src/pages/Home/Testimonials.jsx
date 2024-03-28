@@ -13,12 +13,16 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 
 const Testimonials = () => {
+  const [loading, setLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/reviews")
       .then((res) => res.json())
-      .then((data) => setReviews(data));
+      .then((data) => {
+        setReviews(data);
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -29,19 +33,23 @@ const Testimonials = () => {
       />
 
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-        {reviews.map((review) => (
-          <SwiperSlide key={review._id}>
-            <div className="p-6 mx-24 flex flex-col justify-center items-center gap-3">
-              <Rating
-                style={{ maxWidth: 180 }}
-                value={review.rating}
-                readOnly
-              />
-              <p>{review.details}</p>
-              <h6 className="text-2xl text-orange-400">{review.name}</h6>
-            </div>
-          </SwiperSlide>
-        ))}
+        {loading ? (
+          <span className="loading loading-bars h-40 w-40 mx-auto block"></span>
+        ) : (
+          reviews.map((review) => (
+            <SwiperSlide key={review._id}>
+              <div className="p-6 mx-24 flex flex-col justify-center items-center gap-3">
+                <Rating
+                  style={{ maxWidth: 180 }}
+                  value={review.rating}
+                  readOnly
+                />
+                <p>{review.details}</p>
+                <h6 className="text-2xl text-orange-400">{review.name}</h6>
+              </div>
+            </SwiperSlide>
+          ))
+        )}
       </Swiper>
     </>
   );

@@ -14,7 +14,9 @@ const Order = () => {
   const { category } = useParams();
   const ii = categories.indexOf(category);
   const [index, setIndex] = useState(ii);
-  const { salad, soup, pizza, dessert, drink } = useMenu();
+  const { salad, soup, pizza, dessert, drink, loading } = useMenu();
+
+  if (loading) return <span className="loading loading-bars h-40 w-40 mx-auto block"></span>;
 
   return (
     <>

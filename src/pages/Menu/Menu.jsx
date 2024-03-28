@@ -12,7 +12,9 @@ import useMenu from "../../hooks/useMenu";
 import Title from "../shared/Title";
 
 const Menu = () => {
-  const { salad, soup, pizza, dessert, offered } = useMenu();
+  const { salad, soup, pizza, dessert, offered, loading } = useMenu();
+
+  if (loading) return <span className="loading loading-bars h-40 w-40 mx-auto block"></span>;
 
   return (
     <>
