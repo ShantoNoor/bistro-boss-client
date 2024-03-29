@@ -4,10 +4,14 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
+import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [loginDisable, setLoginDisable] = useState(true);
   const capchaRef = useRef();
+
+  const { signIn } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -101,6 +105,7 @@ const Login = () => {
                 />
               </div>
             </form>
+            <p><small>New Here? <Link to="/signup">Create an account</Link> </small></p>
           </div>
         </div>
       </div>
