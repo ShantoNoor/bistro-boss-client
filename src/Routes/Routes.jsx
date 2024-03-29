@@ -5,6 +5,8 @@ import Menu from "../pages/Menu/Menu.jsx";
 import Order from "../pages/Order/Order.jsx";
 import Login from "../pages/Login/Login.jsx";
 import SignUp from "../pages/SignUp/SignUp.jsx";
+import Dashboard from "../layouts/Dashboard.jsx";
+import Cart from "../pages/Dashboard/Cart.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -16,21 +18,26 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/menu",
+        path: "menu",
         element: <Menu />,
       },
       {
-        path: "/order/:category",
+        path: "order/:category",
         element: <Order />,
       },
     ],
   },
   {
-    path: "/login",
+    path: "login",
     element: <Login />,
   },
   {
-    path: "/signup",
+    path: "signup",
     element: <SignUp />,
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+    children: [{ path: "cart", element: <Cart /> }],
   },
 ]);
