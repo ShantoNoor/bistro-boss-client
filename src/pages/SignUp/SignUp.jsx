@@ -1,8 +1,8 @@
-import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import Title from "../shared/Title";
 
 const SignUp = () => {
   const {
@@ -36,9 +36,7 @@ const SignUp = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Bistro Boss | Sign Up</title>
-      </Helmet>
+      <Title>Sign Up</Title>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">

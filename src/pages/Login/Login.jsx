@@ -8,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import Title from "../shared/Title";
 
 const Login = () => {
   const {
@@ -59,6 +60,8 @@ const Login = () => {
 
   return (
     <>
+      <Title>Login</Title>
+
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
           <div className="text-center lg:text-left">
