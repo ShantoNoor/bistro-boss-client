@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../hooks/useCart";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
+  const [cart] = useCart();
 
   const handleLogOut = () => {
     logOut()
@@ -22,6 +25,15 @@ const NavBar = () => {
 
       <li>
         <Link to="/order/salad">Order Food</Link>
+      </li>
+
+      <li>
+        <Link to="/dashboard/cart">
+          <button className="btn btn-sm -mt-2">
+            <FaShoppingCart className="mr-2"></FaShoppingCart>
+            <div className="badge badge-secondary">+{cart?.length}</div>
+          </button>
+        </Link>
       </li>
 
       {!!user || (
@@ -59,7 +71,7 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 flex items-center"
             >
               {navOptions}
             </ul>
@@ -70,8 +82,17 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
 
-        <div className="navbar-end" >
-          {!!user && <a className="btn" onClick={handleLogOut}>LogOut</a>}
+        <div className="navbar-end">
+          {!!user && (
+            <>
+              <span className="uppercase mr-2 border px-6 py-3 rounded-lg">
+                {user?.displayName}
+              </span>{" "}
+              <a className="btn" onClick={handleLogOut}>
+                LogOut
+              </a>
+            </>
+          )}
         </div>
       </div>
     </>
