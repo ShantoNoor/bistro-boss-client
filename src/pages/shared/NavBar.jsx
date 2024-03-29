@@ -29,10 +29,8 @@ const NavBar = () => {
 
       <li>
         <Link to="/dashboard/cart">
-          <button className="btn btn-sm -mt-2">
-            <FaShoppingCart className="mr-2"></FaShoppingCart>
-            <div className="badge badge-secondary">+{cart?.length}</div>
-          </button>
+          
+          <div className="badge badge-primary"><FaShoppingCart className="mr-2"></FaShoppingCart>+{cart?.length}</div>
         </Link>
       </li>
 
@@ -50,7 +48,7 @@ const NavBar = () => {
   );
   return (
     <>
-      <div className="navbar opacity-50 fixed max-w-screen-xl bg-black text-white z-30">
+      <div className="navbar opacity-75 fixed max-w-screen-xl backdrop-blur-md bg-white text-black z-30">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

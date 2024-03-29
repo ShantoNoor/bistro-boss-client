@@ -3,18 +3,59 @@ import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaCartPlus } from "react-icons/fa6";
-import { FaAd, FaCalendar, FaHome, FaList, FaSearch } from "react-icons/fa";
+import {
+  FaAd,
+  FaBook,
+  FaCalendar,
+  FaEnvelope,
+  FaHome,
+  FaList,
+  FaSearch,
+  FaUsers,
+  FaUtensils,
+} from "react-icons/fa";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const { user } = useAuth();
   const [cart] = useCart();
   const [openMenu, setOpenMenu] = useState(false);
+  const [admin] = useAdmin();
 
   const { pathname } = useLocation();
-  console.log(pathname);
 
-  const list = [
+  const usertype = "admin";
+
+  const adminList = [
+    [
+      "/dashboard/adminHome",
+      "Admin Home",
+      <FaHome key={1} className="w-5 h-5 fill-current text-gray-600" />,
+    ],
+    [
+      "/dashboard/addItems",
+      "Add Items",
+      <FaUtensils key={1} className="w-5 h-5 fill-current text-gray-600" />,
+    ],
+    [
+      "/dashboard/manageItems",
+      "Manage Items",
+      <FaList key={1} className="w-5 h-5 fill-current text-gray-600" />,
+    ],
+    [
+      "/dashboard/bookings",
+      "Manage Bookings",
+      <FaBook key={1} className="w-5 h-5 fill-current text-gray-600" />,
+    ],
+    [
+      "/dashboard/users",
+      "All Users",
+      <FaUsers key={1} className="w-5 h-5 fill-current text-gray-600" />,
+    ],
+  ];
+
+  const userList = [
     [
       "/dashboard/userHome",
       "User Home",
@@ -42,7 +83,7 @@ const Dashboard = () => {
     ],
   ];
 
-  const list2 = [
+  const commonList = [
     [
       "/",
       "Home",
@@ -52,6 +93,11 @@ const Dashboard = () => {
       "/order/salad",
       "Menu",
       <FaSearch key={1} className="w-5 h-5 fill-current text-gray-600" />,
+    ],
+    [
+      "/contact",
+      "Contact",
+      <FaEnvelope key={1} className="w-5 h-5 fill-current text-gray-600" />,
     ],
   ];
 
@@ -88,26 +134,47 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="divide-y divide-gray-900">
-            <ul className="pt-2 pb-4 space-y-1 text-sm">
-              {list.map((lii, i) => (
-                <li
-                  key={i}
-                  className={`${
-                    pathname === lii[0] && "bg-yellow-100"
-                  } text-gray-900`}
-                >
-                  <Link
-                    to={lii[0]}
-                    className="flex items-center p-2 space-x-3 rounded-md"
+            {admin ? (
+              <ul className="pt-2 pb-4 space-y-1 text-sm">
+                {adminList.map((lii, i) => (
+                  <li
+                    key={i}
+                    className={`${
+                      pathname === lii[0] && "bg-yellow-100"
+                    } text-gray-900`}
                   >
-                    {lii[2]}
-                    <span>{lii[1]}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                    <Link
+                      to={lii[0]}
+                      className="flex items-center p-2 space-x-3 rounded-md"
+                    >
+                      {lii[2]}
+                      <span>{lii[1]}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ul className="pt-2 pb-4 space-y-1 text-sm">
+                {userList.map((lii, i) => (
+                  <li
+                    key={i}
+                    className={`${
+                      pathname === lii[0] && "bg-yellow-100"
+                    } text-gray-900`}
+                  >
+                    <Link
+                      to={lii[0]}
+                      className="flex items-center p-2 space-x-3 rounded-md"
+                    >
+                      {lii[2]}
+                      <span>{lii[1]}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
             <ul className="pt-2 pb-4 space-y-1 text-sm">
-              {list2.map((lii, i) => (
+              {commonList.map((lii, i) => (
                 <li
                   key={i}
                   className={`${
