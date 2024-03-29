@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import Title from "../shared/Title";
+import SocialLogin from "../../components/SocialLogin";
 
 const Login = () => {
   const {
@@ -161,6 +162,7 @@ const Login = () => {
                 New Here? <Link to="/signup">Create an account</Link>{" "}
               </small>
             </p>
+            <SocialLogin />
           </div>
         </div>
       </div>

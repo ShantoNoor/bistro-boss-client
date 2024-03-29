@@ -7,8 +7,11 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 export const AuthContex = createContext(null);
 const auth = getAuth(app);
@@ -16,6 +19,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const googleProvider = new GoogleAuthProvider();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -26,6 +30,11 @@ const AuthProvider = ({ children }) => {
       return unsubscribe();
     };
   }, []);
+
+  const googleSignIn = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -58,6 +67,7 @@ const AuthProvider = ({ children }) => {
     signIn,
     logOut,
     updateUserProfile,
+    googleSignIn,
   };
 
   return (

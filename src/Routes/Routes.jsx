@@ -7,6 +7,7 @@ import Login from "../pages/Login/Login.jsx";
 import SignUp from "../pages/SignUp/SignUp.jsx";
 import Dashboard from "../layouts/Dashboard.jsx";
 import Cart from "../pages/Dashboard/Cart.jsx";
+import PrivateRoute from "./PrivateRoute.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: <PrivateRoute><Dashboard /></PrivateRoute>,
     children: [{ path: "cart", element: <Cart /> }],
   },
 ]);

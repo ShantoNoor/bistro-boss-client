@@ -3,8 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import Title from "../shared/Title";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -20,15 +23,23 @@ const SignUp = () => {
 
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          reset();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "User created successfully.",
-            showConfirmButton: false,
-            timer: 1500,
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              reset();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "User created successfully.",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
           });
-          navigate("/");
         })
         .catch((error) => console.log(error));
     });
@@ -144,6 +155,7 @@ const SignUp = () => {
                 Already have an account <Link to="/login">Login</Link>
               </small>
             </p>
+            <SocialLogin />
           </div>
         </div>
       </div>
