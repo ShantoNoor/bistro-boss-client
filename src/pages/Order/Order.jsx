@@ -5,7 +5,6 @@ import Cover from "../shared/Cover";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useMenu from "../../hooks/useMenu";
-import FoodCard from "../../components/FoodCard";
 import { useParams } from "react-router-dom";
 import Title from "../shared/Title";
 import FoodCards from "./FoodCards";
