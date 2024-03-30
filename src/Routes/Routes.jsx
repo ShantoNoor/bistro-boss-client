@@ -11,6 +11,8 @@ import PrivateRoute from "./PrivateRoute.jsx";
 import Users from "../pages/Dashboard/Users.jsx";
 import AddItems from "../pages/Dashboard/AddItems.jsx";
 import AdminRoute from "./AdminRoute.jsx";
+import ManageItems from "../pages/Dashboard/ManageItems.jsx";
+import UpdateItem from "../pages/Dashboard/UpdateItem.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +63,22 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AddItems />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageItems",
+        element: (
+          <AdminRoute>
+            <ManageItems />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "updateItem/:id",
+        element: (
+          <AdminRoute>
+            <UpdateItem />
           </AdminRoute>
         ),
       },

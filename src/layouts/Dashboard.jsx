@@ -25,8 +25,6 @@ const Dashboard = () => {
 
   const { pathname } = useLocation();
 
-  const usertype = "admin";
-
   const adminList = [
     [
       "/dashboard/adminHome",
@@ -105,8 +103,8 @@ const Dashboard = () => {
     <>
       <div className="flex flex-col lg:flex-row">
         <div
-          style={{ top: openMenu ? "0%" : "-100%" }}
-          className="lg:h-screen absolute lg:static p-5 space-y-2 lg:w-3/12 w-full bg-yellow-300 text-gray-800 transition-all duration-200"
+          style={{ left: openMenu ? "0%" : "-100%" }}
+          className="lg:min-h-screen fixed top-0 lg:static p-5 z-20 space-y-2 lg:w-3/12 w-full bg-yellow-300 text-gray-800 transition-all duration-200"
         >
           <div className="flex items-center p-2 space-x-4">
             <div>
@@ -195,12 +193,12 @@ const Dashboard = () => {
         </div>
         <div className="lg:w-9/12" onBlur={() => setOpenMenu(false)}>
           <button
-            className="btn btn-circle fixed top-5 right-5 lg:hidden"
+            className="btn btn-circle fixed top-5 right-5 lg:hidden z-30"
             onClick={() => setOpenMenu((prev) => !prev)}
           >
             <GiHamburgerMenu />
           </button>
-          <div className="p-10">
+          <div className="p-5">
             <Outlet />
           </div>
         </div>
