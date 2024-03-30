@@ -15,10 +15,14 @@ const Featured = () => {
             <p>March 20, 2023</p>
             <h6>WHERE CAN I GET SOME?</h6>
             <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-              voluptate facere, deserunt dolores maiores quod nobis quas quasi.
-              Eaque repellat recusandae ad laudantium tempore consequatur
-              consequuntur omnis ullam maxime tenetur.
+              Bistro Boss is the perfect spot for your culinary cravings!
+              Located at the heart of downtown, we serve up delectable dishes
+              crafted with passion and flair. Swing by our cozy establishment
+              and indulge in our mouthwatering menu filled with flavorful
+              delights that will tantalize your taste buds. Whether {`you're`}
+              craving classic comfort food or daring culinary creations, Bistro
+              Boss has got you covered. Join us for an unforgettable dining
+              experience that will leave you coming back for more.
             </div>
             <button className="btn btn-outline border-0 border-b-4">
               READ MORE

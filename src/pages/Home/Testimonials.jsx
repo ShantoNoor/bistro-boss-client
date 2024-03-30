@@ -11,19 +11,19 @@ import { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Testimonials = () => {
   const [loading, setLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
-    fetch("http://localhost:3000/reviews")
-      .then((res) => res.json())
-      .then((data) => {
-        setReviews(data);
-        setLoading(false);
-      });
-  }, []);
+    axiosPublic("/reviews").then((res) => {
+      setReviews(res.data);
+      setLoading(false);
+    });
+  }, [axiosPublic]);
 
   return (
     <>

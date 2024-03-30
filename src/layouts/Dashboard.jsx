@@ -26,11 +26,11 @@ const Dashboard = () => {
   const { pathname } = useLocation();
 
   const adminList = [
-    [
-      "/dashboard/adminHome",
-      "Admin Home",
-      <FaHome key={1} className="w-5 h-5 fill-current text-gray-600" />,
-    ],
+    // [
+    //   "/dashboard/adminHome",
+    //   "Admin Home",
+    //   <FaHome key={1} className="w-5 h-5 fill-current text-gray-600" />,
+    // ],
     [
       "/dashboard/addItems",
       "Add Items",
@@ -41,11 +41,11 @@ const Dashboard = () => {
       "Manage Items",
       <FaList key={1} className="w-5 h-5 fill-current text-gray-600" />,
     ],
-    [
-      "/dashboard/bookings",
-      "Manage Bookings",
-      <FaBook key={1} className="w-5 h-5 fill-current text-gray-600" />,
-    ],
+    // [
+    //   "/dashboard/bookings",
+    //   "Manage Bookings",
+    //   <FaBook key={1} className="w-5 h-5 fill-current text-gray-600" />,
+    // ],
     [
       "/dashboard/users",
       "All Users",
@@ -54,31 +54,31 @@ const Dashboard = () => {
   ];
 
   const userList = [
-    [
-      "/dashboard/userHome",
-      "User Home",
-      <FaHome key={1} className="w-5 h-5 fill-current text-gray-600" />,
-    ],
-    [
-      "/dashboard/reservation",
-      "Reservation",
-      <FaCalendar key={1} className="w-5 h-5 fill-current text-gray-600" />,
-    ],
+    // [
+    //   "/dashboard/userHome",
+    //   "User Home",
+    //   <FaHome key={1} className="w-5 h-5 fill-current text-gray-600" />,
+    // ],
+    // [
+    //   "/dashboard/reservation",
+    //   "Reservation",
+    //   <FaCalendar key={1} className="w-5 h-5 fill-current text-gray-600" />,
+    // ],
     [
       "/dashboard/cart",
       `Cart (${cart.length})`,
       <FaCartPlus key={1} className="w-5 h-5 fill-current text-gray-600" />,
     ],
-    [
-      "/dashboard/review",
-      "Add a Review",
-      <FaAd key={1} className="w-5 h-5 fill-current text-gray-600" />,
-    ],
-    [
-      "/dashboard/bookings",
-      "My Bookings",
-      <FaList key={1} className="w-5 h-5 fill-current text-gray-600" />,
-    ],
+    // [
+    //   "/dashboard/review",
+    //   "Add a Review",
+    //   <FaAd key={1} className="w-5 h-5 fill-current text-gray-600" />,
+    // ],
+    // [
+    //   "/dashboard/bookings",
+    //   "My Bookings",
+    //   <FaList key={1} className="w-5 h-5 fill-current text-gray-600" />,
+    // ],
   ];
 
   const commonList = [
@@ -92,11 +92,11 @@ const Dashboard = () => {
       "Menu",
       <FaSearch key={1} className="w-5 h-5 fill-current text-gray-600" />,
     ],
-    [
-      "/contact",
-      "Contact",
-      <FaEnvelope key={1} className="w-5 h-5 fill-current text-gray-600" />,
-    ],
+    // [
+    //   "/contact",
+    //   "Contact",
+    //   <FaEnvelope key={1} className="w-5 h-5 fill-current text-gray-600" />,
+    // ],
   ];
 
   return (
