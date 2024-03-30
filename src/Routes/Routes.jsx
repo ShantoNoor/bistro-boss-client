@@ -9,6 +9,8 @@ import Dashboard from "../layouts/Dashboard.jsx";
 import Cart from "../pages/Dashboard/Cart.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import Users from "../pages/Dashboard/Users.jsx";
+import AddItems from "../pages/Dashboard/AddItems.jsx";
+import AdminRoute from "./AdminRoute.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -46,7 +48,22 @@ export const router = createBrowserRouter([
     ),
     children: [
       { path: "cart", element: <Cart /> },
-      { path: "users", element: <Users /> },
+      {
+        path: "users",
+        element: (
+          <AdminRoute>
+            <Users />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "addItems",
+        element: (
+          <AdminRoute>
+            <AddItems />
+          </AdminRoute>
+        ),
+      },
     ],
   },
 ]);

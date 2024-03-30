@@ -1,14 +1,16 @@
 import { Navigate, useLocation } from "react-router-dom";
-import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
+import useAdmin from "../hooks/useAdmin";
 
-const AdminRoute = (children) => {
-  const [user, loading] = useAuth();
+const AdminRoute = ({ children }) => {
+  const { user, loading } = useAuth();
   const [isAdmin, isAdminLoading] = useAdmin();
   const location = useLocation();
 
   if (loading || isAdminLoading) {
-    return <span className="loading loading-bars h-40 w-40 mx-auto block"></span>;
+    return (
+      <span className="loading loading-bars h-40 w-40 mx-auto block"></span>
+    );
   }
 
   if (user && isAdmin) {
